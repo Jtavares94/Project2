@@ -1,114 +1,90 @@
-from Frequency import *
+class Board:
+    def __init__(self, starttile, players):
+        self.players = players
+        self.assets = []
+        self.current_player = None
+        self.tiles = starttile
+        self.turnsLeft = 4
+        
+        
 
-class Node:
-  def __init__(self, value, tail):
-    self.Tail = tail
-    self.Value = value
-    self.IsEmpty = False
-
-class Empty: 
-  def __init__(self):
-    self.IsEmpty = True
-  def __str__(self):
-      return ""
-  def draw(self, offset, screen, texture):
-      return None
-  def reset (self):
-      return None 
-
-Empty = Empty()
-
-
-class Point:
-    def __init__(self, x, y):
-        self.X = x
-        self.Y = y
-    def __str__(self):
-        return "(" + str(self.X) + "," + str(self.Y) + ")"
+    def endTurn(self):
+        currentPlayerIndex = self.players.index(current_player)
+      
+        if currentPlayerIndex + 1 > (len(self.assets) - 1):
+            self.current_player = self.players[0]
+        else:
+            self.current_player = self.players[currentPlayerIndex + 1]
+        
 
 class Player:
-    def __init__(self,name,player):
+    def __init__(self,name):
         self.name = name
         self.money = 500
-        self.player = player
-
-#players
-player1 = Player("p1","player1")
-player2 = Player("p2","player2")
-player3 = Player("p3","player3")
-player4 = Player("p3","player4")
-
-players = [player1, player2, player3, player4]
-
-class gamestate(Player, Frequency):
-    def __init__(self, current, player):
-        self.player = player
-        self.current_player = current
+        
         self.turn = 4
-        self.money = 500 
+        self.assets = []
+
+    def current_player(self):
+        random.shuffle(players)
+        for player in players:
+            player = self.current_player
+            if self.player == self.current_player:
+                
+                for asset in self.assets:
+                    self.money += 150
+                """
+                for x in self.turn:
+                    if self.player:
+                        self.boat()
+                        self.turn -= 1
+                    elif self.player:
+                        self.tank()
+                        self.turn -= 1
+                    elif self.player:
+                        self.boat()
+                        self.turn -= 1
+                        for move in map:
+                            self.turn -= 1"""
+                    
+
+    def current_player_message(self):
+        font = pygame.font.SysFont("monospace", 20)
+        text = font.render("Current player is:" + self.current_player, 1, white)
+        startDisplay.blit(text, (710, 10))
+
+
+
+
+class Assets():
+    def __init__(self, asset, image, position, life, damage):
+        self.asset = asset     
+        self.image = image
+        self.position = position
+        self.life = life
+        self.damage = damage
 
     def soldier(self):
         self.soldier = False
         if self.soldier == True:
-            startDisplay.blit(player1,(player1pos[0]*(L+d),player1pos[1]*(L+d)))
+            startDisplay.blit(player1,(0,39))
             self.money -= 150
+            self.life = 50
+            self.damage = range(30,70)
 
     def boat(self):
         self.boat = False
         if self.buy_boat == True:
-            #startDisplay.blit(boat1,(boat1pos[0]*(L+d),boat1pos[1]*(L+d)))
+            #startDisplay.blit(boat1,())
             self.money -= 350
-            w
+            self.life = 200
+            self.damage = range(150,250)
+                       
     def tank(self):
         self.boat = False
         if self.buy_boat == True:
             self.money -= 500
-
-    def current_player(self):
-        if self.player == self.current_player:
-            self.money += 150
-            self.turn = 4
-            for x in self.turn:
-                if self.player:
-                    self.boat()
-                    self.turn -= 1
-                if self.player:
-                    self.tank()
-                    self.turn -= 1
-                if self.player:
-                    self.boat()
-                    self.turn -= 1
-
-
-            
-            
-
-
-        
-
-        
-
-             
-
-
-
-class Frequency(object):
-    def __init__(self, name, life, texture, playerid, HomeBase, damage, price):
-        self.name = name
-        self.life = life
-        self.texture = texture
-        self.playerID = playerid
-        self.HomeBase = HomeBase
-        self.damage = damage
-        self.price = price
-
-    def getDamageoptions(self, dmg):
-        self.Damage = dmg
-        
-
-    def getPosition(self):
-        return self.CurrentTileNode.Value.Position
-
-
+            self.life = 300
+            self.damage = range(200,350)
 
  

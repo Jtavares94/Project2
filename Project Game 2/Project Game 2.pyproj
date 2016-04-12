@@ -22,26 +22,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="andro.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="board.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="classes.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Frequency.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="bordspel.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="game.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Project_Game_2.py" />
-    <Compile Include="startscreen and game.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
